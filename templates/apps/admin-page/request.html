@@ -1,5 +1,7 @@
 {% extends 'apps/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
     <div class="card-body d-flex justify-content-between">
         <div>
@@ -22,13 +24,13 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Operator</th>
-                            <th scope="col">Mahsulot</th>
-                            <th scope="col">Oqim</th>
-                            <th scope="col">Buyurtmachi</th>
-                            <th scope="col">Viloyat</th>
-                            <th scope="col">Holat</th>
-                            <th scope="col">Izoh</th>
-                            <th scope="col">Sana</th>
+                            <th scope="col">{% translate "Product" %}</th>
+                            <th scope="col">{% translate "Stream" %}</th>
+                            <th scope="col">{% translate "Client" %}</th>
+                            <th scope="col">{% translate "Region" %}</th>
+                            <th scope="col">{% translate "Status" %}</th>
+                            <th scope="col">{% translate "Comment" %}</th>
+                            <th scope="col">{% translate "Date" %}</th>
                         </tr>
                         </thead>
 

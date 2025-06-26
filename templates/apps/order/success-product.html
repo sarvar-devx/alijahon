@@ -1,6 +1,7 @@
 {% extends 'apps/base.html' %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
@@ -11,15 +12,15 @@
 
         <img style="height: 100px; width:100px; margin-left:45%; margin-top: 30px"
              src="{% static 'apps/assets/img/success_icon.png' %}" alt="Green Success Image">
-        <h3 class="mt-4">Arizangiz qabul qilindi!</h3>
-        <p>Batafsil ma&#x27;lumot uchun operator yaqin vaqt ichida siz bilan aloqaga chiqadi.</p>
-        <p>Iltimos, telefoningiz yoqilgan holda bo'lsin!</p>
+        <h3 class="mt-4">{% translate "Your application has been accepted" %}!</h3>
+        <p>{% translate "An operator will contact you shortly for more information." %}.</p>
+        <p>{% translate "Please keep your phone turned on!" %}</p>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Mahsulot</th>
-                <th scope="col">Summa</th>
-                <th scope="col">Soni</th>
+                <th scope="col">{% translate "Product" %}</th>
+                <th scope="col">{% translate "Price" %}</th>
+                <th scope="col">{% translate "Quantity" %}</th>
             </tr>
             </thead>
             <tbody>
@@ -30,12 +31,12 @@
             </tr>
 
             <tr>
-                <th scope="col">Yetkazib berish</th>
+                <th scope="col">{% translate "Delivery" %}</th>
                 <th scope="col">
                     Delivery Price Regions: {{ delivery.delivery_price_regions }}<br>
                     Delivery Price Tashkent Region: {{ delivery.delivery_price_tashkent_region }}<br>
                     Delivery Price Tashkent: {{ delivery.delivery_price_tashkent }}<br><br>
-                    <b style="color: black">Operator siz bilan bog`lanib tushincha beradi</b>
+                    <b style="color: black">{% translate "The operator will contact you and provide an explanation." %}</b>
                 </th>
             </tr>
 
@@ -48,7 +49,7 @@
 
             </div>
             <div class="col-md-6 mt-3">
-                <a href="{% url 'product_list' %}" class="btn btn-primary w-50">Boshqa mahsulotlar</a>
+                <a href="{% url 'product_list' %}" class="btn btn-primary w-50">{% translate "Other products" %}</a>
             </div>
         </div>
     </div>

@@ -37,6 +37,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+
 ]
 
 ROOT_URLCONF = 'root.urls'
@@ -98,6 +100,18 @@ TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 
 USE_TZ = True
+
+USE_L10N = True
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('uz', gettext('Uzbek')),
+    ('en', gettext('English')),
+)
+
+SITE_ID = 1
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR / 'static/')

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <style>
     .search-box .search-box-icon {
@@ -47,6 +48,18 @@
     </ul>
     <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
         <li class="nav-item">
+            <form action="{% url 'set_language' %}" method="post" class="d-inline-block">
+                {% csrf_token %}
+                <div class="input-group mb-3" style="max-width: 300px;">
+                    <select class="form-select" name="language" aria-label="Select language">
+                        <option value="uz" {% if request.LANGUAGE_CODE == 'uz' %}selected{% endif %}>🇺🇿 O'zbek</option>
+                        <option value="en" {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Change</button>
+                </div>
+            </form>
+        </li>
+        <li class="nav-item">
             <div class="theme-control-toggle fa-icon-wait px-2">
                 <input class="form-check-input ms-0 theme-control-toggle-input" id="themeControlToggle"
                        type="checkbox"
@@ -79,7 +92,7 @@
 
         <li class="nav-item">
             <div class="theme-control-toggle px-2">
-                <a href="/admin_page/coins">Tangalar: 0</a>
+                <a href="/admin_page/coins">{% translate "Coins" %}: 0</a>
             </div>
         </li>
 
@@ -90,7 +103,8 @@
                aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-xl">
                     <img style="object-fit: contain;" class="rounded-circle"
-                         src="{% if user.is_authenticated %}{% if user.image %}{{ user.image.url }}{% else %}https://alijahon.uz/media/img/nouser.png{% endif %}{% else %}https://alijahon.uz/static/app/themes/stock/assets/img/nouser.png{% endif %}"
+                         src="
+                                 {% if user.is_authenticated %}{% if user.image %}{{ user.image.url }}{% else %}https://alijahon.uz/media/img/nouser.png{% endif %}{% else %}https://alijahon.uz/static/app/themes/stock/assets/img/nouser.png{% endif %}"
                          alt="card"/>
                 </div>
             </a>
@@ -100,15 +114,15 @@
                     <div class="bg-white dark__bg-1000 rounded-2 py-2">
 
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item" href="/profile">
-                            Profil
+                            Profile
                         </a>
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item"
                            href="{% url 'favorite_list' %}">
-                            Sevimlilar
+                            {% translate "Favorites" %}
                         </a>
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item"
                            href="/profile/settings">
-                            Sozlamalar
+                            {% translate "Settings" %}
                         </a>
                         <a class="dropdown-item fw-bold text-warning" href="{% url 'menu' %}">
                             <svg class="svg-inline--fa fa-crown fa-w-20 me-1" aria-hidden="true"
@@ -118,16 +132,16 @@
                                       d="M528 448H112c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm64-320c-26.5 0-48 21.5-48 48 0 7.1 1.6 13.7 4.4 19.8L476 239.2c-15.4 9.2-35.3 4-44.2-11.6L350.3 85C361 76.2 368 63 368 48c0-26.5-21.5-48-48-48s-48 21.5-48 48c0 15 7 28.2 17.7 37l-81.5 142.6c-8.9 15.6-28.9 20.8-44.2 11.6l-72.3-43.4c2.7-6 4.4-12.7 4.4-19.8 0-26.5-21.5-48-48-48S0 149.5 0 176s21.5 48 48 48c2.6 0 5.2-.4 7.7-.8L128 416h384l72.3-192.8c2.5.4 5.1.8 7.7.8 26.5 0 48-21.5 48-48s-21.5-48-48-48z"></path>
                             </svg>
                             <!-- <span class="fas fa-crown me-1" aria-hidden="true"></span> Font Awesome fontawesome.com -->
-                            <span>Adminlar uchun</span>
+                            <span>{% translate "For admins" %}</span>
                         </a>
 
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item"
                            href="{% url 'logout_page' %}">
-                            Chiqish
+                            {% translate "Logout" %}
                         </a>
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item" target="_blank"
-                           href="https://t.me/shaxadmin">
-                            Savollar bo'yicha
+                           href="https://t.me/sarvar_devx">
+                            {% translate "On questions" %}
                         </a>
 
                     </div>
@@ -138,11 +152,11 @@
 
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item"
                            href="{% url 'login_page' %}">
-                            Profil
+                            Profile
                         </a>
                         <a class="dropdown-item header_navbar_lang_menu_dropdown_item"
                            href="{% url 'login_page' %}">
-                            Ro'yxatdan o'tish
+                            {% translate "Register" %}
                         </a>
 
                     </div>

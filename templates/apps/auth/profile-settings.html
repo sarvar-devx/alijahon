@@ -1,5 +1,6 @@
 {% extends  'apps/base.html' %}
 
+{% load i18n %}
 
 {% block content %}
 
@@ -24,10 +25,10 @@
                                 <label class="mb-0 overlay-icon d-flex flex-center" for="profile-image"><span
                                         class="bg-holder overlay overlay-0"></span><span
                                         class="z-index-1 text-white dark__text-white text-center fs--1"><span
-                                        class="fas fa-camera"></span><span class="d-block">Update</span></span></label>
+                                        class="fas fa-camera"></span><span class="d-block">{% translate "Update" %}</span></span></label>
                             </div>
                             <div class="col-12 d-flex justify-content-end" style="margin-left: 80px">
-                                <button class="btn btn-primary" type="submit">Saqlash</button>
+                                <button class="btn btn-primary" type="submit">{% translate "Save" %}</button>
                             </div>
                         </form>
                     </div>
@@ -40,7 +41,7 @@
         <div class="col-lg-8 pe-lg-2">
             <div class="card mb-3">
                 <div class="card-header">
-                    <h5 class="mb-0">Sozlamalar</h5>
+                    <h5 class="mb-0">{% translate "Settings" %}</h5>
                 </div>
                 <div class="card-body bg-light">
 
@@ -48,24 +49,24 @@
                           enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="col-lg-6">
-                            Ismi
+                            {% translate "First name" %}
                             <input type="text" name="first_name" class="form-control" maxlength="30" id="id_first_name"
                                    value="{{ user.first_name }}">
 
                         </div>
 
                         <div class="col-lg-6">
-                            Familiya
+                            {% translate "Last name" %}
                             <input type="text" name="last_name" class="form-control" maxlength="40" id="id_last_name"
                                    value="{{ user.last_name }}">
 
                         </div>
 
                         <div class="col-lg-6">
-                            Viloyat
+                            {% translate "Region" %}
                             <select name="region" class="form-control" id="id_region"
                                     onchange="getDistricts(this.value)">
-                                <option value="" selected disabled>Viloyatni tanlang</option>
+                                <option value="" selected disabled>{% translate "Select region" %}</option>
                                 {% for region in regions %}
                                     <option value="{{ region.id }}"{% if user.district.region.id == region.id %}
                                             selected{% endif %}>{{ region.name }}</option>
@@ -74,9 +75,9 @@
                         </div>
 
                         <div class="col-lg-6">
-                            Shahar/Tuman
+                            {% translate "District" %}
                             <select name="district" class="form-control" id="id_district">
-                                <option value="" selected disabled>Shahar/Tuman tanlang</option>
+                                <option value="" selected disabled>{% translate "Select district" %}</option>
                                 {% if user.district %}
                                     <option value="{{ user.district.id }}" selected>{{ user.district.name }}</option>
                                 {% endif %}
@@ -84,7 +85,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            Manzil
+                            {% translate "Address" %}
                             <input type="text" name="address" class="form-control" maxlength="200" id="id_location"
                                    value="{{ user.address|default_if_none:'' }}">
                         </div>
@@ -98,7 +99,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            Siz haqingizda
+                            {% translate "About you" %}
                             <textarea name="about" cols="40" rows="10" class="form-control" maxlength="399"
                                       id="id_description">{{ user.about }}</textarea>
 
@@ -106,7 +107,7 @@
 
 
                         <div class="col-12 d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Saqlash</button>
+                            <button class="btn btn-primary" type="submit">{% translate "Save" %}</button>
                         </div>
 
                     </form>
@@ -121,25 +122,24 @@
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <h5 class="mb-0">Parolni o'zgartirish</h5>
+                        <h5 class="mb-0">{% translate "Change password" %}</h5>
                     </div>
                     <div class="card-body bg-light">
                         <form action="{% url 'update_password' %}" method="post">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label class="form-label" for="old-password">Oldingi parol</label>
+                                <label class="form-label" for="old-password">{% translate "Old password" %}</label>
                                 <input name="password" class="form-control" id="old-password" type="password">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="new-password">Yangi parol</label>
+                                <label class="form-label" for="new-password">{% translate "New password" %}</label>
                                 <input name="new_password1" class="form-control" id="new-password" type="password">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="confirm-password">Yangi parolni
-                                    takrorlash</label>
+                                <label class="form-label" for="confirm-password">{% translate "Confirm password" %}</label>
                                 <input name="new_password2" class="form-control" id="confirm-password" type="password">
                             </div>
-                            <button class="btn btn-primary d-block w-100" type="submit">Parolni yangilash
+                            <button class="btn btn-primary d-block w-100" type="submit">{% translate "Change password" %}
                             </button>
                         </form>
                     </div>

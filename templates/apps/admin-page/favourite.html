@@ -2,6 +2,8 @@
 
 {% load favourite_tags %}
 
+{% load i18n %}
+
 {% block content %}
     <div class="card mb-3">
         <div class="card-body">
@@ -10,7 +12,7 @@
                     <a href="{% url 'product_list' %}" class="content_name_block_back"><span
                             class="fa fa-arrow-right"></span></a>
                     <div class="content_name_block_text">
-                        <p> Sevimlilarim </p>
+                        <p> {% translate "Favorites" %} Sevimlilarim </p>
                     </div>
                 </div>
             </div>
@@ -22,9 +24,9 @@
                             {% for favourite in favourites %}
                                 <div class="col-md-4 p-5">
                                     <h3>
-                                        <a href="{% url 'product_detail' favourite.product.slug %}">Mahsulot: {{ favourite.product.name }}</a>
+                                        <a href="{% url 'product_detail' favourite.product.slug %}">{% translate "Product" %}: {{ favourite.product.name }}</a>
                                     </h3>
-                                    <small>Mahsulot narxi: {{ favourite.product.price }}</small>
+                                    <small>{% translate "Product price" %}: {{ favourite.product.price }}</small>
                                     <a href="{% url 'favorite' favourite.product.pk %}"
                                        style="font-size: 30px; color: goldenrod; margin-left: 20px">
                                         {% if user|is_liked:favourite.product %}
@@ -42,7 +44,7 @@
                 <div class="content_single-product-nouser">
                     <div class="content_single-product-nouser_info">
                         <span class="fa fa-shopping-cart"></span>
-                        <p> Sevimlilar ro'yhati bo'sh </p>
+                        <p> {% translate "Favourites is empty" %} </p>
                     </div>
                 </div>
             {% endif %}

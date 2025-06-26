@@ -1,6 +1,7 @@
 {% extends 'apps/base.html' %}
 
 {% load favourite_tags %}
+{% load i18n %}
 
 {% block content %}
     <div class="card mt-2 mb-2">
@@ -9,7 +10,7 @@
                 <div class="col">
                     <h5 class="mb-0" id="followers"></h5>
                 </div>
-                <div class="col text-end"><a class="font-sans-serif" href="{% url 'category_list' %}">Kategoriyalar</a>
+                <div class="col text-end"><a class="font-sans-serif" href="{% url 'category_list' %}">{% translate 'Categories' %}</a>
                 </div>
             </div>
         </div>
@@ -82,7 +83,7 @@
                                     </a>
                                 </div>
 
-                                <a href="{% url 'favorite' product.pk %}" style="font-size: 25px; color: goldenrod" >
+                                <a href="{% url 'favorite' product.pk %}" style="font-size: 25px; color: goldenrod">
                                     {% if user|is_liked:product %}
                                         ★
                                     {% else %}

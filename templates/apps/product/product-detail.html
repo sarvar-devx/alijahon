@@ -2,6 +2,7 @@
 
 {% load category_tags %}
 {% load favourite_tags %}
+{% load i18n %}
 
 {% block content %}
 
@@ -16,18 +17,18 @@
                         <input type="text" hidden name="stream" value="{{ stream.pk }}">
                     {% endif %}
                     <div class="mb-2">
-                        <label class="form-label" for="formGroupNameInput">Ism:</label>
+                        <label class="form-label" for="formGroupNameInput">{% translate "First name" %}:</label>
                         <input class="form-control" name="full_name" id="formGroupNameInput" type="text"/>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label" for="phone-mask">Telefon nomer:</label>
+                        <label class="form-label" for="phone-mask">{% translate "Phone number" %}:</label>
                         <input class="form-control" id="phone-mask" required name="phone" type="text"/>
                     </div>
                     <span style="padding-bottom: 100px;">
     
                 </span>
                     <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 20px;">
-                        <button class="btn btn-primary" type="submit">Buyurtma berish</button>
+                        <button class="btn btn-primary" type="submit">{% translate "To order" %}</button>
                     </div>
                 </form>
             </div>
@@ -70,9 +71,10 @@
 
 {% block custom_js %}
     <script>
-        $('#phone-mask').inputmask({
-            "mask": "+\\9\\98(99) 999-99-99"
+        $(document).ready(function () {
+            $('#phone-mask').inputmask({
+                "mask": "+\\9\\98(99) 999-99-99"
+            });
         });
-        $('#messages-modal').modal('show');
     </script>
 {% endblock %}

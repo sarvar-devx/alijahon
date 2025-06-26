@@ -4,7 +4,7 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.core.exceptions import ValidationError
-from django.db.models import Q, Count, F, Sum
+from django.db.models import Q, Count, Sum
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -244,13 +244,13 @@ class StreamStatusListView(ListView):
                 qs = qs.filter(orders__created_at__year=now().year, orders__created_at__month=now().month)
 
         qs = qs.annotate(
-            new=Count('orders', Q(orders__status='new') & Q(orders__stream_id=F('id'))),
-            ready=Count('orders', Q(orders__status='ready') & Q(orders__stream_id=F('id'))),
-            deliver=Count('orders', Q(orders__status='deliver') & Q(orders__stream_id=F('id'))),
-            delivered=Count('orders', Q(orders__status='delivered') & Q(orders__stream_id=F('id'))),
-            cant_phone=Count('orders', Q(orders__status='cant_phone') & Q(orders__stream_id=F('id'))),
-            canceled=Count('orders', Q(orders__status='canceled') & Q(orders__stream_id=F('id'))),
-            archived=Count('orders', Q(orders__status='archived') & Q(orders__stream_id=F('id'))),
+            new=Count('orders', Q(orders__status=Order.StatusType.NEW)),
+            ready=Count('orders', Q(orders__status=Order.StatusType.READY)),
+            deliver=Count('orders', Q(orders__status=Order.StatusType.DELIVER)),
+            delivered=Count('orders', Q(orders__status=Order.StatusType.DELIVERED)),
+            cant_phone=Count('orders', Q(orders__status=Order.StatusType.CANT_PHONE)),
+            canceled=Count('orders', Q(orders__status=Order.StatusType.CANCELED)),
+            archived=Count('orders', Q(orders__status=Order.StatusType.ARCHIVED)),
         )
         qs.aggregates = qs.aggregate(
             total_visit_count=Sum('visit_count'),

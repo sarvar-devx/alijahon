@@ -2,6 +2,7 @@
 
 
 {% load category_tags %}
+{% load i18n %}
 
 {% block content %}
     <style>
@@ -35,7 +36,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Oqim yaratish</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">{% translate "Create stream" %}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -46,13 +47,15 @@
                                 <input name="product" type="hidden" id="hidden_product" value="{{ id }}">
 
                                 Oqim nomi <input type="text" name="name" class="form-control" placeholder
-                                                 mt-2="Oqim uchun nom kiriting" required id="id_title">
+                                                 mt-2="{% translate 'Enter a name for the stream' %}" required
+                                                 id="id_title">
 
                                 Chegirma <input type="text" oninput="checkDiscountPrice(this)" name="discount"
                                                 class="form-control"
-                                                placeholder="Chegirma miqdori: {{ payment_referral }} so'mgacha"
+                                                placeholder="{% translate "Discount amount up to:" %} {{ payment_referral }} {% translate "soums" %}"
                                                 id="id_discount">
-                                <input type="submit" class="btn btn-primary mt-4 btn-click" value="Oqim yaratish">
+                                <input type="submit" class="btn btn-primary mt-4 btn-click"
+                                       value="{% translate "Create stream" %}">
                             </form>
                         </div>
                     </div>
@@ -61,25 +64,27 @@
             <div class="container">
                 <br>
                 <br>
-                <h3 class="text-center"> Hozirda sotuvda bor <br> mahsulotlar </h3>
+                <h3 class="text-center"> {% translate "Currently on sale <br> products" %} </h3>
                 <br>
 
                 <div class="container border-bottom-4">
                     <div class="header_tab_menu">
                         <div class="header_menu" style="overflow: auto">
-                            <a href="{% url 'market' %}" class="btn btn-default {{ request.path|is_current_category }}">
-                                Hammasi </a>
-                            <a href="?category=top" class="btn btn-default"> Top tovarlar </a>
+                            <a href="{% url 'market' %}"
+                               class="btn btn-default {{ request.GET.category|is_current_category }}">
+                                {% translate "All" %} </a>
+                            <a href="?category=top"
+                               class="btn btn-default {{ request.GET.category|is_current_category:'top' }}"> {% translate "Top products" %} </a>
                             {% for category in categories %}
                                 <a href="?category={{ category.slug }}"
-                                   class="btn btn-default {{ request.path|is_current_category:category.slug }}"> {{ category.name }} </a>
+                                   class="btn btn-default {{ request.GET.category|is_current_category:category.slug }}"> {{ category.name }} </a>
                             {% endfor %}
                         </div>
                         <div class="search-box" style="width: 100%;">
                             <form class="position-relative" style="width: 100%" data-bs-display="static"
                                   autocomplete="off">
                                 <input id="search-input" name="search" class="form-control search-input" type="search"
-                                       placeholder="Qidiruv..." aria-label="Search"/>
+                                       placeholder="{% translate "Search" %}..." aria-label="Search"/>
                                 <span class="fas fa-search search-box-icon"></span>
                             </form>
                         </div>
@@ -117,13 +122,13 @@
                                 </div>
 
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">To'lov: <strong>{{ product.payment_referral }} </strong>
+                                    <li class="list-group-item">{% translate "Payment" %}: <strong>{{ product.payment_referral }} </strong>
                                     </li>
 
-                                    <li class="list-group-item">Zaxirada: <strong> {{ product.quantity }} ta </strong>
+                                    <li class="list-group-item">{% translate "In stock" %}: <strong> {{ product.quantity }} ta </strong>
                                     </li>
 
-                                    <li class="list-group-item">Chegirma: <strong> yuq </strong>
+                                    <li class="list-group-item">{% translate "Discount" %}: <strong> yuq </strong>
                                     </li>
 
                                 </ul>
@@ -135,10 +140,10 @@
                                 <button class="btn btn-primary btn_open_modal" type="button" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"
                                         name="{{ product.id }},{{ product.payment_referral }}">
-                                    Oqim yaratish
+                                    {% translate "Create stream" %}
                                 </button>
                                 <a href="{% url 'statistic_product' product.id %}"
-                                   class="btn bg-danger text-white mt-2">Batafsil</a>
+                                   class="btn bg-danger text-white mt-2">{% translate "More info" %}</a>
                             </div>
                         </div>
 
@@ -224,10 +229,9 @@
         {##}
         {##}
         {#console.log("Chegirma miqdori:", value);#}
-        {#}#}
 
-            {#console.log({{ form.errors }})#}
-            console.log(product_id)
+        {#console.log({{ form.errors }})#}
+        console.log(product_id)
 
     </script>
 {% endblock %}

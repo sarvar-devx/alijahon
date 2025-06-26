@@ -1,5 +1,7 @@
 {% extends 'apps/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
     <div class="content_auth_form">
@@ -14,20 +16,21 @@
                         <div class="card-body p-4">
                             <div class="row flex-between-center">
                                 <div class="col-auto">
-                                    <h3>Kirish</h3>
+                                    <h3>{% translate "Login" %}</h3>
                                 </div>
                             </div>
                             <form>
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
                                         <label class="form-label" for="split-login-email">
-                                            Telefon nomer</label>
+                                            {% translate "Phone number" %}</label>
                                     </div>
                                     <input type="text" name="phone" id="phone-mask" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
-                                        <label class="form-label" for="split-login-password">Parol</label>
+                                        <label class="form-label"
+                                               for="split-login-password">{% translate "Password" %}</label>
                                     </div>
                                     <input class="form-control" name="password" id="split-login-password"
                                            type="password">
@@ -50,7 +53,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">
-                                        Kirish
+                                        {% translate "Login" %}
                                     </button>
                                 </div>
                             </form>
@@ -62,11 +65,13 @@
     </div>
 
 {% endblock %}
+
 {% block custom_js %}
     <script>
-        $('#phone-mask').inputmask({
-            "mask": "+\\9\\98(99) 999-99-99"
+        $(document).ready(function () {
+            $('#phone-mask').inputmask({
+                "mask": "+\\9\\98(99) 999-99-99"
+            });
         });
-        $('#messages-modal').modal('show');
     </script>
 {% endblock %}

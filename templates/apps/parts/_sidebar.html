@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
     <script>
         var navbarStyle = localStorage.getItem("navbarStyle");
@@ -31,27 +33,27 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="{% url 'product_list' %}" aria-expanded="false">
                                 <div class="d-flex align-items-center"><span
-                                        class="nav-link-text ps-1">Bosh sahifa</span>
+                                        class="nav-link-text ps-1">{% translate "Home page" %}</span>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="{% url 'category_list' %}" aria-expanded="false">
                                 <div class="d-flex align-items-center"><span
-                                        class="nav-link-text ps-1">Mahsulotlar</span>
+                                        class="nav-link-text ps-1">{% translate "Products" %}</span>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="{% url 'order_list' %}" aria-expanded="false">
                                 <div class="d-flex align-items-center"><span
-                                        class="nav-link-text ps-1">Buyurtmalar</span>
+                                        class="nav-link-text ps-1">{% translate "Orders" %}</span>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="{% url 'favorite_list' %}" aria-expanded="false">
-                                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Yoqtirgan mahsulotlarim</span>
+                                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">{% translate "Favorites" %}</span>
                                 </div>
                             </a>
                         </li>
@@ -71,14 +73,14 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="{% url 'stream_list' %}" aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
-                                            class="nav-link-text ps-1">Oqim</span>
+                                            class="nav-link-text ps-1">{% translate "Stream" %}</span>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="{% url 'stream_status' %}" aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
-                                            class="nav-link-text ps-1">Statistika</span>
+                                            class="nav-link-text ps-1">{% translate "Statistics" %}</span>
                                     </div>
                                 </a>
                             </li>
@@ -86,21 +88,21 @@
                                 <a class="nav-link active" href="{% url 'order_stream_request_list' %}"
                                    aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
-                                            class="nav-link-text ps-1">So'rovlar</span>
+                                            class="nav-link-text ps-1">{% translate "Requests" %}</span>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="{% url 'competition' %}" aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
-                                            class="nav-link-text ps-1">Konkurs</span>
+                                            class="nav-link-text ps-1">{% translate "Competition" %}</span>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="{% url 'payment' %}" aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
-                                            class="nav-link-text ps-1">To'lov</span>
+                                            class="nav-link-text ps-1">{% translate "Payment" %}</span>
                                     </div>
                                 </a>
                             </li>

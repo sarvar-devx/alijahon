@@ -1,10 +1,10 @@
 {% extends 'apps/base.html' %}
-
+{% load i18n %}
 
 {% block content %}
     <div class="card-group mt-2">
         <div class="card overflow-hidden">
-            <div class="card-img-top"><img class="img-fluid" src="{{ competition.image }}" alt="Konkurs"></div>
+            <div class="card-img-top"><img class="img-fluid" src="{{ competition.image }}" alt={% translate 'Competition' %}></div>
             <div class="card-body">
                 <h3 class="card-title">Alijahon.uz</h3>
                 <p class="card-text">{{ competition.description }}</p>
@@ -12,7 +12,7 @@
                     <div class="col-6 col-sm-6 col-lg-4 mb-4">
                         <div class="card text-white bg-info">
                             <div class="card-body">
-                                <div class="card-title">Boshlash</div>
+                                <div class="card-title">{% translate "Start" %}</div>
                                 <p class="card-text">{{ competition.started_at }}</p>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                     <div class="col-6 col-sm-6 col-lg-4 mb-4">
                         <div class="card text-white bg-danger">
                             <div class="card-body">
-                                <div class="card-title">Yakunlash</div>
+                                <div class="card-title">{% translate "Completion" %}</div>
                                 <p class="card-text">{{ competition.ended_at }}</p>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
         <div class="card-header">
             <div class="row flex-between-end">
                 <div class="col-auto align-self-center">
-                    <h5 class="mb-0" data-anchor="data-anchor" id="table-example">Konkurs natijalari<a
+                    <h5 class="mb-0" data-anchor="data-anchor" id="table-example">{% translate "Competition results" %}<a
                             class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#table-example"
                             style="padding-left: 0.375em;"></a></h5>
                 </div>
@@ -51,8 +51,8 @@
                                 <thead class="bg-200 text-900">
                                 <tr>
                                     <th class="sort" data-sort="name">№</th>
-                                    <th class="sort" data-sort="email">Sotuvchi</th>
-                                    <th class="sort" data-sort="age">Sotilgan</th>
+                                    <th class="sort" data-sort="email">{% translate "Saler" %}</th>
+                                    <th class="sort" data-sort="age">{% translate "Sold" %}</th>
                                 </tr>
                                 </thead>
                                 <tbody class="list">

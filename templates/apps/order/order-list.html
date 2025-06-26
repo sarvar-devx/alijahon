@@ -1,5 +1,6 @@
 {% extends 'apps/base.html' %}
 
+{% load i18n %}
 
 {% block content %}
 
@@ -13,9 +14,9 @@
 
                             {% for order in orders %}
                                 <div class="col-md-4 p-5">
-                                    <h3>Mahsulot: {{ order.product.name }}</h3>
-                                    <small>Mahsulot narxi: {{ order.price }}</small>
-                                    <p>Soni: {{ order.quantity }}</p>
+                                    <h3>{% translate "Product" %}: {{ order.product.name }}</h3>
+                                    <small>{% translate "Product price" %}: {{ order.price }}</small>
+                                    <p>{% translate "Quantity" %}: {{ order.quantity }}</p>
                                 </div>
                             {% endfor %}
 

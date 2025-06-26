@@ -1,5 +1,7 @@
 {% extends 'apps/base.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
     <div class="card mb-3">
@@ -10,7 +12,7 @@
                     <a href="{% url 'menu' %}" class="content_name_block_back"><span
                             class="fa fa-arrow-right"></span></a>
                     <div class="content_name_block_text">
-                        <h1>Mahsulot statistikasi</h1>
+                        <h1>{% translate "Product statistics" %}</h1>
                     </div>
                 </div>
             </div>
@@ -21,24 +23,24 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Ma'lumot</th>
-                                <th scope="col">Umumiy</th>
-                                <th scope="col">Sizda</th>
+                                <th scope="col">{% translate "Information" %}</th>
+                                <th scope="col">{% translate "General" %}</th>
+                                <th scope="col">{% translate "You have" %}</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Oqimlar</td>
+                                <td>{% translate "Streams" %}</td>
                                 <td>{{ all_stream_len }}</td>
                                 <td>{{ user_stream_len }}</td>
                             </tr>
                             <tr>
-                                <td>Admin bonusi</td>
+                                <td>{% translate "Admin bonus" %}</td>
                                 <td>{{ product.payment_referral|default_if_none:0 }}</td>
                                 <td>{{ product.payment_referral|default_if_none:0 }}</td>
                             </tr>
                             <tr>
-                                <td>Mahsulot narxi</td>
+                                <td>{% translate "Product statistics" %}</td>
                                 <td>{{ product.price }}</td>
                                 <td>{{ product.price }}</td>
                             </tr>

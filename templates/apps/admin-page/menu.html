@@ -1,6 +1,7 @@
 {% extends 'apps/base.html' %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
@@ -14,7 +15,7 @@
                     <!--/.bg-holder-->
 
                     <div class="card-header z-index-1">
-                        <h5 class="text-primary">Assalomu alaykum Admin bo'limiga xush kelibsiz! </h5>
+                        <h5 class="text-primary">{% translate "Hello and welcome to the Admin section!" %}</h5>
                     </div>
 
                     <span class="fs-2 fw-medium">Balans: </span><span class="fs-3 fw-medium"
@@ -43,8 +44,7 @@
                                     <div class="flex-1"><a class="stretched-link" href="{% url 'market' %}/">
                                         <h5 class="text-800 mb-0">Market</h5>
                                     </a>
-                                        <p class="mb-0 fs--2 text-500">Hozirda sotuvda bor
-                                            mahsulotlar</p>
+                                        <p class="mb-0 fs--2 text-500">{% translate "Currently on sale products" %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -63,9 +63,9 @@
                                         <!-- <span class="fas fa-crown text-warning"></span> Font Awesome fontawesome.com -->
                                     </div>
                                     <div class="flex-1"><a class="stretched-link" href="{% url 'stream_list' %}">
-                                        <h5 class="text-800 mb-0">Oqimlar</h5>
+                                        <h5 class="text-800 mb-0">{% translate "Streams" %}</h5>
                                     </a>
-                                        <p class="mb-0 fs--2 text-500">Mening havolalarim</p>
+                                        <p class="mb-0 fs--2 text-500">{% translate "My links" %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                     <div class="flex-1"><a class="stretched-link" href="{% url 'stream_status' %}">
                                         <h5 class="text-800 mb-0">Statistika</h5>
                                     </a>
-                                        <p class="mb-0 fs--2 text-500">Sotilayotgan mahsulotlar statisikasi</p>
+                                        <p class="mb-0 fs--2 text-500">{% translate "Statistics of products" %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -105,10 +105,10 @@
                                         <!-- <span class="fas fa-video text-success"></span> Font Awesome fontawesome.com -->
                                     </div>
                                     <div class="flex-1"><a class="stretched-link"
-                                                           href="/{% url "order_stream_request_list" %}">
-                                        <h5 class="text-800 mb-0">So'rovlar</h5>
+                                                           href="{% url "order_stream_request_list" %}">
+                                        <h5 class="text-800 mb-0">{% translate "Requests" %}</h5>
                                     </a>
-                                        <p class="mb-0 fs--2 text-500">So'rovlar</p>
+                                        <p class="mb-0 fs--2 text-500">{% translate "Requests" %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                         <!-- <span class="fas fa-user text-info"></span> Font Awesome fontawesome.com -->
                                     </div>
                                     <div class="flex-1"><a class="stretched-link" href="{% url 'payment' %}">
-                                        <h5 class="text-800 mb-0">To'lovlar</h5>
+                                        <h5 class="text-800 mb-0">{% translate "Payments" %}</h5>
                                     </a>
                                         <p class="mb-0 fs--2 text-500">Mening hisobim & To'lovga sorov berish</p>
                                     </div>
@@ -148,9 +148,9 @@
                                         <!-- <span class="fas fa-user text-info"></span> Font Awesome fontawesome.com -->
                                     </div>
                                     <div class="flex-1"><a class="stretched-link" href="{% url 'competition' %}">
-                                        <h5 class="text-800 mb-0">Konkurs</h5>
+                                        <h5 class="text-800 mb-0">{% translate "Competition" %}</h5>
                                     </a>
-                                        <p class="mb-0 fs--2 text-500">Konkurs sahifasi</p>
+                                        <p class="mb-0 fs--2 text-500">{% translate "Competition page" %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -168,9 +168,9 @@
                                         <!-- <span class="fas fa-user text-info"></span> Font Awesome fontawesome.com -->
                                     </div>
                                     <div class="flex-1"><a class="stretched-link" href="/admin_page/coins">
-                                        <h5 class="text-800 mb-0">Tangalar</h5>
+                                        <h5 class="text-800 mb-0">{% translate "Coins" %}</h5>
                                     </a>
-                                        <p class="mb-0 fs--2 text-500">Tilla tangalar</p>
+                                        <p class="mb-0 fs--2 text-500">{% translate "Gold coins" %}</p>
                                     </div>
                                 </div>
                             </div>

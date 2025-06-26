@@ -1,5 +1,6 @@
 {% extends 'apps/base.html' %}
 
+{% load i18n %}
 
 {% block content %}
     <div class="card mb-3">
@@ -8,11 +9,11 @@
                 <div class="container border-bottom-4">
                     <div class="header_tab_menu">
                         <div class="header_menu" style="overflow: auto">
-                            <a href="?period=today" class="btn btn-default">Bugun</a>
-                            <a href="?period=last_day" class="btn btn-default">Kechagi</a>
-                            <a href="?period=weekly" class="btn btn-default">Haftalik</a>
-                            <a href="?period=monthly" class="btn btn-default">Oylik</a>
-                            <a href="{% url 'stream_status' %}" class="btn btn-default">Hammasi</a>
+                            <a href="?period=today" class="btn btn-default">{% translate "Today" %}</a>
+                            <a href="?period=last_day" class="btn btn-default">{% translate "Yesterday" %}</a>
+                            <a href="?period=weekly" class="btn btn-default">{% translate "Weekly" %}</a>
+                            <a href="?period=monthly" class="btn btn-default">{% translate "Monthly" %}</a>
+                            <a href="{% url 'stream_status' %}" class="btn btn-default">{% translate "All" %}</a>
                         </div>
                     </div>
                 </div>
@@ -21,19 +22,19 @@
                         <thead class="text-center">
 
                         <tr>
-                            <th scope="col">Oqim</th>
-                            <th scope="col">Mahsulot</th>
-                            <th scope="col">Tashrif</th>
-                            <th scope="col">Yangi</th>
-                            <th scope="col">Dastavkaga tayyor</th>
-                            <th scope="col">Yetkazilmoqda</th>
-                            <th scope="col">Yetqazib berildi</th>
-                            <th scope="col">Telefon ko'tarmadi</th>
-                            <th scope="col">Bekor qilindi</th>
-                            <th scope="col">Arxivlandi</th>
+                            <th scope="col">{% translate "Stream" %}</th>
+                            <th scope="col">{% translate "Product" %}</th>
+                            <th scope="col">{% translate "Visit" %}</th>
+                            <th scope="col">{% translate "New" %}</th>
+                            <th scope="col">{% translate "Ready to delivery" %}</th>
+                            <th scope="col">{% translate "Delivering" %}</th>
+                            <th scope="col">{% translate "Delivered" %}</th>
+                            <th scope="col">{% translate "The phone didn't pick up" %}</th>
+                            <th scope="col">{% translate "Cancelled" %}</th>
+                            <th scope="col">{% translate "Archived" %}</th>
                         </tr>
                         <tr class="bg-info">
-                            <td> JAMI</td>
+                            <td>{% translate "Total" %}</td>
                             <td></td>
                             <td> {{ streams.aggregates.total_visit_count }}</td>
                             <td> {{ streams.aggregates.total_new }}</td>
@@ -65,7 +66,8 @@
 
 
                         <tr class="bg-info">
-                            <td> JAMI</td>
+{#                             TODO Total --> TOTAL #}
+                            <td>{% translate "Total" %}</td>
                             <td></td>
                             <td> {{ streams.aggregates.total_visit_count }}</td>
                             <td> {{ streams.aggregates.total_new }}</td>

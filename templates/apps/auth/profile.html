@@ -1,5 +1,6 @@
 {% extends 'apps/base.html' %}
 
+{% load i18n %}
 
 {% block content %}
     <div class="card">
@@ -15,8 +16,7 @@
                         <br>
                         <p>998{{ user.phone }}</p>
                     </h6>
-                    <p class="fs--2 mb-1"><a class="btn btn-link text-700" href="{% url 'profile_settings' %}">Sozlamalarga
-                        o'tish</a></p>
+                    <p class="fs--2 mb-1"><a class="btn btn-link text-700" href="{% url 'profile_settings' %}">{% translate "Go to settings" %}</a></p>
 
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="notification-body">
-                    <p class="mb-1"><strong>Mening sevimlarim</strong></p>
+                    <p class="mb-1"><strong>{% translate "Favorites" %}</strong></p>
                 </div>
             </a>
 
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="notification-body">
-                    <p class="mb-1"><strong>Mening buyurtmalarim</strong></p>
+                    <p class="mb-1"><strong>{% translate "My orders" %}</strong></p>
                 </div>
             </a>
 
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="notification-body">
-                    <p class="mb-1"><strong>Mijozlarni qo'llab-quvvatlash</strong></p>
+                    <p class="mb-1"><strong>{% translate "Customer support" %}</strong></p>
                 </div>
             </a>
 
