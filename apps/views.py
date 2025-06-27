@@ -235,9 +235,9 @@ class StreamStatusListView(ListView):
 
         if period := self.request.GET.get('period'):
             if period == 'today':
-                qs = qs.filter(orders__created_at__exact=now().date())
+                qs = qs.filter(orders__created_at__date=now().date())
             elif period == 'last_day':
-                qs = qs.filter(orders__created_at__exact=now().date() - timedelta(1))
+                qs = qs.filter(orders__created_at__date=now().date() - timedelta(1))
             elif period == 'weekly':
                 qs = qs.filter(orders__created_at__gte=now() - timedelta(now().weekday()))
             elif period == 'monthly':
