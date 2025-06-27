@@ -47,6 +47,8 @@
                 <h4 class="d-flex align-items-center">
                 <span class="text-warning me-2">
                     {% if 'oqim' in request.path %}
+                        <del style="color: #5a5b60">{{ stream.product.price }}</del>
+                        <span style="color: green; font-size: 18px">- {{ stream.discount }}</span><br>
                         {{ stream.product.price|minus:stream.discount }}
                     {% else %}
                         {{ product.price }}
