@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 
-from apps.models import ProductProxy, CategoryProxy
+from apps.models import ProductProxy, CategoryProxy, Competition
 from apps.models.proxy import DriverUserProxy, OperatorUserProxy, ManagerUserProxy, UserProxy, AdminUserProxy, \
     OrderProxy, NewOrderProxy, ReadyOrderProxy, DeliverOrderProxy, DeliveredOrderProxy, CantPhoneOrderProxy, \
     CanceledOrderProxy, ReturnedOrderProxy, ArchivedOrderProxy, HoldOrderProxy

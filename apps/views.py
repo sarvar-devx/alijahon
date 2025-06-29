@@ -305,12 +305,20 @@ class PaymentTemplateView(TemplateView):
     template_name = 'apps/admin-page/payment.html'
 
 
-class CompetitionListView(DetailView):
-    model = Competition
+class CompetitionListView(ListView):
+    model = User
     template_name = 'apps/admin-page/competition.html'
+    context_object_name = 'sellers'
 
-    def get_object(self, queryset=None):
-        return '1'
+    def get_queryset(self):
+        qs = super().get_queryset().filter(stream__owner=self.request.user)
+        qs = qs.annotate(sold_count=Count('stream__orders'))
+        return qs
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['competition'] = Competition.objects.last()
+        return ctx
 
 
 class BrokenOrderOperatorTemplateView(TemplateView):
