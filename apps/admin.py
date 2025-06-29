@@ -126,3 +126,8 @@ class ArchivedOrderProxyAdmin(ModelAdmin):
 @register(HoldOrderProxy)
 class HoldOrderProxyAdmin(ModelAdmin):
     pass
+
+
+@register(Competition)
+class CompetitionAdmin(ModelAdmin):
+    pass
